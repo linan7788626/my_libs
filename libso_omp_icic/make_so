@@ -1,0 +1,6 @@
+#gcc -Wall -fPIC -c rtf.c
+#gcc -shared rtf.o -o ./librtf.so
+
+gcc -Wall -Ofast -fopenmp -fPIC -c rtf.c
+gcc -shared -fopenmp -lrt rtf.o -o ./libicic.so
+rm ./*.o

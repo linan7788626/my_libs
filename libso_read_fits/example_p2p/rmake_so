@@ -1,0 +1,2 @@
+gcc -Wall -fPIC -c p2p.c -lcfitsio
+gcc -shared -Wl  p2p.o -o ./libp2p.so

@@ -1,0 +1,4 @@
+rm read_fits.o
+rm libreadfits.so
+gcc -Wall -fPIC -c -I/home/nli/softwares/cfitsio -L/home/nli/softwares/cfitsio -lcfitsio  read_fits.c
+gcc -shared -Wl -I/home/nli/softwares/cfitsio -L/home/nli/softwares/cfitsio -lcfitsio read_fits.o -lcfitsio -o ./libreadfits.so

@@ -1,0 +1,4 @@
+rm pointer_read_fits.o
+rm libreadfits.so
+gcc -Wall -fPIC -c pointer_read_fits.c -lcfitsio
+gcc -shared -Wl  pointer_read_fits.o -lcfitsio -o ./libreadfits.so

@@ -1,0 +1,5 @@
+cd source
+gcc -Wall -c -I/usr/common/usg/gsl/1.16/intel/include -L/usr/common/usg/gsl/1.16/intel/lib -lgsl -lgslcblas -I/usr/common/usg/cfitsio/3.31/intel/include -L/usr/common/usg/cfitsio/3.31/intel/lib -lcfitsio -I/opt/fftw/3.3.4.0/sandybridge/include -L/opt/fftw/3.3.4.0/sandybridge/lib -lfftw3 *.c
+rm ../lib/libglsg.a
+ar -cvq ../lib/libglsg.a *.o
+rm *.o
