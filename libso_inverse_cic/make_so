@@ -1,2 +1,0 @@
-gcc -Wall -fPIC -c rtf.c
-gcc -shared rtf.o -o ./librtf.so
