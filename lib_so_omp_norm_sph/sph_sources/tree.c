@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <malloc/malloc.h>
 
 #define  MAX_REAL_NUMBER  1.0e35
 
@@ -92,7 +93,7 @@ int tree_treebuild(void)
   for(i = 0; i < NumPart; i++)
     {
       th = NumPart;
-      
+
       while(1)
         {
           if(th >= NumPart)	/* we are dealing with an internal node */
@@ -104,20 +105,20 @@ int tree_treebuild(void)
                 subnode += 2;
               if(P[i].Pos[2] > Nodes[th].center[2])
                 subnode += 4;
-              
+
               nn = Nodes[th].u.suns[subnode];
-              
+
               if(nn >= 0)
 /* ok, something is in the daughter slot already, need to continue */
                 {
-                  parent = th;	
+                  parent = th;
 /* note: subnode can still be used in the next step of the walk */
                   th = nn;
                 }
               else
                 {
-                  /* here we have found an empty slot where we can 
-                   * attach the new particle as a leaf 
+                  /* here we have found an empty slot where we can
+                   * attach the new particle as a leaf
                    */
                   Nodes[th].u.suns[subnode] = i;
                   break;	/* done for this particle */
@@ -126,10 +127,10 @@ int tree_treebuild(void)
           else
             {
               /* we try to insert into a leaf with a single particle
-               * need to generate a new internal node at this point 
+               * need to generate a new internal node at this point
                */
               Nodes[parent].u.suns[subnode] = nfree;
-	      
+
 	      nfreep->len = 0.5 * Nodes[parent].len;
 	      lenhalf = 0.25 * Nodes[parent].len;
 
@@ -167,9 +168,9 @@ int tree_treebuild(void)
 
 		  if(nfreep->len < 1.0e-3 * Softening)
 		    {
-		      /* seems like we're dealing with particles   
-		       * at identical locations. randomize 
-		       * subnode index (well below gravitational softening scale). 
+		      /* seems like we're dealing with particles
+		       * at identical locations. randomize
+		       * subnode index (well below gravitational softening scale).
 		       */
 		      subnode = (int) (8.0 * drand48());
 		      if(subnode >= 8)
@@ -178,7 +179,7 @@ int tree_treebuild(void)
 
 		  nfreep->u.suns[subnode] = th;
 
-		  th = nfree;	/* resume trying to insert the new particle at 
+		  th = nfree;	/* resume trying to insert the new particle at
 				   the newly created internal node */
 
 		  numnodes++;

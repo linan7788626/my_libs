@@ -1,3 +1,3 @@
-gcc-mp-4.9 -Wall -Ofast -fopenmp -fPIC -c ./sph_sources/*.c
-gcc-mp-4.9 -shared -fopenmp -lrt *.o -o ./lib/libsphsdens.so
+gcc-4.8 -Wall -Ofast -fopenmp -fPIC -c ./sph_sources/*.c
+gcc-4.8 -shared -fopenmp *.o -o ./lib/libsphsdens.so
 rm ./*.o

@@ -20,7 +20,7 @@ def call_sph_sdens(file_particles,Bsz,Nc,Np):
     xc1 = ct.c_float(0.0)
     xc2 = ct.c_float(0.0)
     xc3 = ct.c_float(0.0)
-    mass_particle = ct.c_float(1e9)
+    mass_particle = ct.c_float(1e0)
     posx1 = np.zeros((Nc,Nc),dtype=ct.c_float)
     posx2 = np.zeros((Nc,Nc),dtype=ct.c_float)
     sdens = np.zeros((Nc,Nc),dtype=ct.c_float)
@@ -54,7 +54,7 @@ def tsz_based_on_sdens(zbar,vbar,sdens):
 def main():
     zbar = 0.7
     vbar = 500 #km/s comoving distance
-    ncc=1024
+    ncc=256
     npp=200000 # total mass = 1e9*2e5 M_sun/h
     bsz=3.0 #Mpc/h comoving distance
 
